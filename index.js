@@ -14,5 +14,13 @@ if (fs.existsSync(entryFileAbsolutePath) === false) {
 
 fs.readFile(entryFileAbsolutePath, "utf-8", (err, data) => {
   const parseResult = parser.parse(data, { sourceType: "module" });
-  console.log(JSON.stringify(parseResult, undefined, 4));
+  if (parseResult.type !== "File") {
+    throw new Error("The parse was not on a file.");
+  }
+
+  const { body } = parseResult.program;
+  const importDeclarations = body.filter((babelBlock) => babelBlock.type === 'ImportDeclaration')
+  const importedFiles = importDeclarations.map((importDeclaration) => importDeclaration.source)
+
+  console.log(JSON.stringify(importedFiles, undefined, 4));
 });
