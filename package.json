@@ -1,0 +1,18 @@
+{
+  "name": "js_software_landscape",
+  "version": "0.1.0",
+  "description": "Travel source code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guillaume Brioudes <myllaume.fr>",
+  "license": "UNLICENSED",
+  "bin": {
+    "jsland": "index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@babel/parser": "^7.21.2"
+  }
+}
